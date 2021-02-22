@@ -53,6 +53,7 @@ function TodoList(props: TodoListPropsType) {
 				/>)}
 			</ul>
 			<button onClick={showAllTasks}>All</button>
+			<button onClick={showAllTasks}>All</button>
 			<button onClick={showActiveTasks}>Active</button>
 			<button onClick={showCompletedTasks}>Completed</button>
 		</div>
