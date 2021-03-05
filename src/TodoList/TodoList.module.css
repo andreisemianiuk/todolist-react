@@ -11,24 +11,31 @@
 }
 
 .btn {
-  border: 2px solid springgreen;
+  color: darkblue;
+  font-weight: bold;
+  border: 2px solid blue;
   border-radius: 5px;
   outline: transparent;
   margin: 3px;
 }
 
 .addBtn {
-  background-color: springgreen;
+  background-color: blue;
   color: white;
   font-weight: bold;
   outline: none;
-  border: 1px solid chartreuse;
-  border-radius: 5px;
+  border: 1px solid blue;
+  border-radius: 3px;
   margin-left: 10px;
 }
 
+.filterBtns {
+  margin: 10px;
+}
+
 .selected {
-  background-color: springgreen;
+  background-color: blue;
+  color: white;
   outline: transparent;
 }
 

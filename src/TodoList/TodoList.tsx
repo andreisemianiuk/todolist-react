@@ -68,20 +68,23 @@ function TodoList(props: TodoListPropsType) {
         <button className={styles.addBtn} onClick={onClickHandler}>Add</button>
         {error && <div className={styles.errorMessage}>{error}</div>}
       </div>
+      <div className={styles.filterBtns}>
+        <button className={`${styles.btn} ${props.filter === 'all' ? styles.selected : ''}`} onClick={showAllTasks}>All
+        </button>
+        <button className={`${styles.btn} ${props.filter === 'active' ? styles.selected : ''}`}
+                onClick={showActiveTasks}>Active
+        </button>
+        <button className={`${styles.btn} ${props.filter === 'completed' ? styles.selected : ''}`}
+                onClick={showCompletedTasks}>Completed
+        </button>
+      </div>
       <ul>
         {props.tasks.map(v => <TodoListTask key={v.id} id={v.id} todolistId={props.id} title={v.title} isDone={v.isDone}
                                             removeTask={props.removeTask}
                                             changeChecked={props.changeChecked}
         />)}
       </ul>
-      <button className={`${styles.btn} ${props.filter === 'all' ? styles.selected : ''}`} onClick={showAllTasks}>All
-      </button>
-      <button className={`${styles.btn} ${props.filter === 'active' ? styles.selected : ''}`}
-              onClick={showActiveTasks}>Active
-      </button>
-      <button className={`${styles.btn} ${props.filter === 'completed' ? styles.selected : ''}`}
-              onClick={showCompletedTasks}>Completed
-      </button>
+    
     </div>
   )
 }
