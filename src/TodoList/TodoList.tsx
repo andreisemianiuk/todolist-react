@@ -55,11 +55,10 @@ function TodoList(props: TodoListPropsType) {
   
   return (
     <div>
-      <div className={styles.titleContainer}>
-        <h3 className={styles.title}>{props.title}</h3>
+      <h3 className={styles.title}>{props.title}
         <button className={styles.titleBtn} onClick={deleteTodolist}>x</button>
-      </div>
-      <div className={styles.inputWrapper}>
+      </h3>
+      <div>
         <input
           className={error ? styles.error : ''}
           value={title}
