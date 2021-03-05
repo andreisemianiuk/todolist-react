@@ -1,8 +1,53 @@
-.container {
-  padding: 10px;
-  border: 2px solid #333;
+.titleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
   text-align: center;
+}
+
+.titleBtn {
+  height: 20px;
+  width: 20px;
+  margin: 10px;
+  padding: 0 0 2px 0;
+  color: firebrick;
+}
+
+.btn {
+  border: 2px solid springgreen;
+  border-radius: 5px;
+  outline: transparent;
+  margin: 3px;
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addBtn {
+  background-color: springgreen;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  border: 1px solid chartreuse;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.selected {
+  background-color: springgreen;
+  outline: transparent;
+}
+
+.error {
+  border: 2px solid red;
+  outline: transparent;
+}
+
+.errorMessage {
+  color: firebrick;
 }

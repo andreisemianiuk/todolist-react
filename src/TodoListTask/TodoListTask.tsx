@@ -1,34 +1,37 @@
-import React from 'react'
-// import { FilterType, TaskType } from '../App'
+import React, { ChangeEvent } from 'react'
 import styles from './TodoListTask.module.css'
 
 type TodoListTaskPropsType = {
-	title: string
-	key: string
-	id: string
-	removeTask: (id: string) => void
-	changeChecked: (id: string, isDone: boolean) => void
+  todolistId: string
+  title: string
+  key: string
+  id: string
+  isDone: boolean
+  removeTask: (id: string, todolistId: string) => void
+  changeChecked: (id: string, isDone: boolean, todolistId: string) => void
 }
 
 function TodoListTask(props: TodoListTaskPropsType) {
-	console.log('task rendered');
-	const onCheckedHandler = (e: any) => {
-		props.changeChecked(props.id, e.currentTarget.checked)
-	}
 
-	const removeTask = () => {
-		props.removeTask(props.id)
-	}
+  const onCheckedHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    props.changeChecked(props.id, e.currentTarget.checked, props.todolistId)
+  }
 
-	return (
-		<li key={props.key}>
+  const removeTask = () => {
+    props.removeTask(props.id, props.todolistId)
+  }
+
+  const taskCompleted = props.isDone ? styles.selected : ''
+
+  return (
+    <li key={props.key}>
 			<span className={styles.item}>
-				<input type="checkbox" onChange={onCheckedHandler} />
-				<span>{props.title}</span>
-				<button onClick={removeTask}>X</button>
+				<input type="checkbox" onChange={onCheckedHandler} checked={props.isDone}/>
+				<span className={`${styles.text} ${taskCompleted}`}>{props.title}</span>
+				<button className={styles.delete} onClick={removeTask}>x</button>
 			</span>
-		</li>
-	)
+    </li>
+  )
 }
 
 export default TodoListTask
