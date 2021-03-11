@@ -19,16 +19,6 @@
   margin: 3px;
 }
 
-.addBtn {
-  background-color: blue;
-  color: white;
-  font-weight: bold;
-  outline: none;
-  border: 1px solid blue;
-  border-radius: 3px;
-  margin-left: 10px;
-}
-
 .filterBtns {
   margin: 10px;
 }
@@ -37,14 +27,4 @@
   background-color: blue;
   color: white;
   outline: transparent;
-}
-
-.error {
-  border: 2px solid red;
-  outline: transparent;
-}
-
-.errorMessage {
-  margin-left: 10px;
-  color: firebrick;
 }

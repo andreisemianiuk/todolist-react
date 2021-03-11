@@ -1,7 +1,8 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react'
+import React from 'react'
 import { FilterType, TaskType } from '../App'
 import TodoListTask from '../TodoListTask/TodoListTask'
 import styles from './TodoList.module.css'
+import { AddItemForm } from '../AddItemForm/AddItemForm'
 
 type TodoListPropsType = {
   id: string
@@ -16,33 +17,8 @@ type TodoListPropsType = {
 }
 
 function TodoList(props: TodoListPropsType) {
-  const [title, setTitle] = useState<string>('')
-  const [error, setError] = useState<string | null>(null)
-  
-  const addTask = () => {
-    if (title.trim()) {
-      props.addTask(title, props.id)
-      setTitle('')
-    } else {
-      setError('Title is required!')
-      setTitle('')
-    }
-  }
-  
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.currentTarget.value
-    setError('')
-    setTitle(value)
-  }
-  
-  const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      addTask()
-    }
-  }
-  
-  const onClickHandler = () => {
-    addTask()
+  const addTask = (title: string) => {
+    props.addTask(title, props.id)
   }
   
   const deleteTodolist = () => {
@@ -58,16 +34,9 @@ function TodoList(props: TodoListPropsType) {
       <h3 className={styles.title}>{props.title}
         <button className={styles.titleBtn} onClick={deleteTodolist}>x</button>
       </h3>
-      <div>
-        <input
-          className={error ? styles.error : ''}
-          value={title}
-          onChange={onChangeHandler}
-          onKeyPress={onKeyPressHandler}
-        />
-        <button className={styles.addBtn} onClick={onClickHandler}>Add</button>
-        {error && <div className={styles.errorMessage}>{error}</div>}
-      </div>
+      
+      <AddItemForm addItem={addTask}/>
+      
       <div className={styles.filterBtns}>
         <button className={`${styles.btn} ${props.filter === 'all' ? styles.selected : ''}`} onClick={showAllTasks}>All
         </button>
@@ -79,7 +48,8 @@ function TodoList(props: TodoListPropsType) {
         </button>
       </div>
       <ul>
-        {props.tasks.map(v => <TodoListTask key={v.id} id={v.id} todolistId={props.id} title={v.title} isDone={v.isDone}
+        
+        {props.tasks && props.tasks.map(v => <TodoListTask key={v.id} id={v.id} todolistId={props.id} title={v.title} isDone={v.isDone}
                                             removeTask={props.removeTask}
                                             changeChecked={props.changeChecked}
         />)}
